@@ -1,0 +1,8 @@
+{
+  "name": "kodilla_express_2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/shivetay/kodilla_express_tickets.git",
+  "author": "Łukasz Dawidowicz <lddev@outlook.com>",
+  "license": "MIT"
+}
