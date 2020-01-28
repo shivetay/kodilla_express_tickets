@@ -9,10 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(
-  cors({
-    origin: 'https://gentle-temple-07637.herokuapp.com/',
-    methods: 'GET, POST, PUT, DELETE',
-  })
+  cors({ origin: 'http://localhost:3000', methods: 'GET, POST, PUT, DELETE' })
 );
 
 app.use((req, res, next) => {
@@ -55,9 +52,9 @@ db.once('open', () => {
 });
 db.on('error', err => console.log('Error ' + err));
 
-const server = app.listen(process.env.PORT || 8000, () => {
-  console.log('Server is running on port: 8000 ');
-});
+// const server = app.listen(process.env.PORT || 8000, () => {
+//   console.log('Server is running on port: 8000 ');
+// });
 
 const io = socket(server);
 
