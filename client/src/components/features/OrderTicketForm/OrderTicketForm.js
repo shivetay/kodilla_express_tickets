@@ -12,8 +12,7 @@ import {
 } from 'reactstrap';
 
 import './OrderTicketForm.scss';
-import SeatChooser from '../SeatChooser/SeatChooserContainer';
-import { loadSeats } from '../../../redux/seatsRedux';
+import SeatChooser from './../SeatChooser/SeatChooserContainer';
 
 class OrderTicketForm extends React.Component {
   state = {
@@ -49,7 +48,7 @@ class OrderTicketForm extends React.Component {
 
   submitForm = async e => {
     const { order } = this.state;
-    const { addSeat, loadSeats } = this.props;
+    const { addSeat } = this.props;
 
     e.preventDefault();
 
@@ -64,7 +63,6 @@ class OrderTicketForm extends React.Component {
         },
         isError: false,
       });
-      loadSeats();
     } else {
       this.setState({ isError: true });
     }

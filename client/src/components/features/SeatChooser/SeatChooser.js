@@ -7,16 +7,14 @@ import './SeatChooser.scss';
 class SeatChooser extends React.Component {
   componentDidMount() {
     this.socket = io('http://localhost:8000');
-    const { loadSeats, loadSeatsData } = this.props;
-    this.socket.on('seatsUpdated', seats => {
-      loadSeatsData(seats);
-    });
+
+    const { loadSeats } = this.props;
+    this.socket.on('seatsUpdated', seats => this.props.loadSeatsData(seats));
     loadSeats();
   }
 
   isTaken = seatId => {
     const { seats, chosenDay } = this.props;
-
     return seats.some(item => item.seat === seatId && item.day === chosenDay);
   };
 
@@ -49,9 +47,42 @@ class SeatChooser extends React.Component {
       );
   };
 
+  countSeats = number => {
+    const { chosenDay, seats } = this.props;
+    const dayArray = [];
+    switch (chosenDay) {
+      case 1:
+        for (let seat of seats) {
+          if (seat.day === chosenDay) {
+            dayArray.push(seat);
+          }
+        }
+        break;
+      case 2:
+        for (let seat of seats) {
+          if (seat.day === chosenDay) {
+            dayArray.push(seat);
+          }
+        }
+        break;
+      case 3:
+        for (let seat of seats) {
+          if (seat.day === chosenDay) {
+            dayArray.push(seat);
+          }
+        }
+        break;
+      default:
+        return dayArray;
+    }
+
+    return number - dayArray.length;
+  };
+
   render() {
-    const { prepareSeat } = this;
+    const { prepareSeat, countSeats } = this;
     const { requests } = this.props;
+    const numberOfSeats = 50;
 
     return (
       <div>
@@ -64,7 +95,7 @@ class SeatChooser extends React.Component {
         </small>
         {requests['LOAD_SEATS'] && requests['LOAD_SEATS'].success && (
           <div className='seats'>
-            {[...Array(50)].map((x, i) => prepareSeat(i + 1))}
+            {[...Array(numberOfSeats)].map((x, i) => prepareSeat(i + 1))}
           </div>
         )}
         {requests['LOAD_SEATS'] && requests['LOAD_SEATS'].pending && (
@@ -73,6 +104,9 @@ class SeatChooser extends React.Component {
         {requests['LOAD_SEATS'] && requests['LOAD_SEATS'].error && (
           <Alert color='warning'>Couldn't load seats...</Alert>
         )}
+        <h5>
+          Free Seats: {countSeats(numberOfSeats)}/{numberOfSeats}
+        </h5>
       </div>
     );
   }
