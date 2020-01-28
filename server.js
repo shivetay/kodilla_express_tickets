@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-// const socket = require('socket.io');
+const socket = require('socket.io');
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
@@ -11,10 +11,10 @@ app.use(
   cors({ origin: 'http://localhost:3000', methods: 'GET, POST, PUT, DELETE' })
 );
 
-// app.use((req, res, next) => {
-//   req.io = io;
-//   next();
-// });
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, '/client/build')));
@@ -35,16 +35,16 @@ app.use((req, res) => {
   res.status(404).send({ message: '404 not found...' });
 });
 
-app.listen(8000, () => {
+const server = app.listen(8000, () => {
   console.log('Server is runnng on port: 8000');
   console.log('Start working NOW!!');
 });
 
-// const io = socket(server);
+const io = socket(server);
 
-// io.on('connection', socket => {
-//   console.log('client with ID:', socket.id, ' has just logged');
-//   socket.on('disconnect', () => {
-//     console.log('client ID: ', socket.id, ' has just left');
-//   });
-// });
+io.on('connection', socket => {
+  console.log('client with ID:', socket.id, ' has just logged');
+  socket.on('disconnect', () => {
+    console.log('client ID: ', socket.id, ' has just left');
+  });
+});

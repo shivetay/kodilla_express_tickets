@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import MainMenu from './../MainMenu/MainMenu';
-import Footer from './../Footer/Footer';
+import MainMenu from '../MainMenu/MainMenu';
+import Footer from '../Footer/Footer';
 
 const MainLayout = ({ children }) => (
   <div>
