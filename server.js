@@ -9,7 +9,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(
-  cors({ origin: 'http://localhost:3000', methods: 'GET, POST, PUT, DELETE' })
+  cors({
+    origin: 'https://gentle-temple-07637.herokuapp.com/',
+    methods: 'GET, POST, PUT, DELETE',
+  })
 );
 
 app.use((req, res, next) => {
