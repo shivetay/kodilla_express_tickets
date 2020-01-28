@@ -72,8 +72,6 @@ class SeatChooser extends React.Component {
           }
         }
         break;
-      default:
-        return dayArray;
     }
 
     return number - dayArray.length;
