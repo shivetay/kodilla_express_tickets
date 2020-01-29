@@ -1,5 +1,4 @@
 const Concert = require('../models/concert.models');
-const uuidv1 = require('uuid/v1');
 
 exports.getAll = async (req, res) => {
   try {
@@ -34,6 +33,7 @@ exports.postSingle = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
 exports.updateSingle = async (req, res) => {
   const { performer, genre, price, day, image } = req.body;
 
