@@ -42,7 +42,7 @@ const server = app.listen(process.env.PORT || 8000, () => {
 });
 
 const cluster =
-  'mongodb+srv://shivetay:Chi7i!13@cluster0-h60yd.mongodb.net/test?retryWrites=true&w=majority';
+  'mongodb+srv://shivetay:Chi7i!13@cluster0-h60yd.mongodb.net/NewWaveDB';
 
 mongoose.connect(cluster, {
   useNewUrlParser: true,
