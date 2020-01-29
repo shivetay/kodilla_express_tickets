@@ -20,7 +20,7 @@ exports.getRandom = async (req, res) => {
   }
 };
 
-exports.getSIngle = async (req, res) => {
+exports.getSingle = async (req, res) => {
   try {
     const testi = await Testimoniall.findById(req.params.id);
     if (!testi)

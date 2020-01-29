@@ -41,7 +41,10 @@ const server = app.listen(process.env.PORT || 8000, () => {
   console.log('Start working NOW!!');
 });
 
-mongoose.connect('mongodb://localhost:27017/NewWaveDB', {
+const cluster =
+  'mongodb+srv://shivetay:Chi7i!13@cluster0-h60yd.mongodb.net/test?retryWrites=true&w=majority';
+
+mongoose.connect(cluster, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

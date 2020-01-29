@@ -8,7 +8,7 @@ exports.getAll = async (req, res) => {
   }
 };
 
-exports.getSIngle = async (req, res) => {
+exports.getSingle = async (req, res) => {
   try {
     const seat = await Seat.findById(req.params.id);
     if (!seat) res.status(404).json({ message: 'There is no such seat' });
