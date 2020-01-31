@@ -1913,3 +1913,9 @@ node_modules/sparse-bitfield/LICENSE
 node_modules/sparse-bitfield/package.json
 node_modules/sparse-bitfield/README.md
 node_modules/sparse-bitfield/test.js
+node_modules/mongo-sanitize/CHANGELOG.md
+node_modules/mongo-sanitize/index.js
+node_modules/mongo-sanitize/LICENSE
+node_modules/mongo-sanitize/package.json
+node_modules/mongo-sanitize/README.md
+node_modules/mongo-sanitize/test.js
