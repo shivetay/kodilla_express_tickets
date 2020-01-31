@@ -3,10 +3,12 @@ const path = require('path');
 const cors = require('cors');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(helmet());
 
 app.use(
   cors({ origin: 'http://localhost:3000', methods: 'GET, POST, PUT, DELETE' })
