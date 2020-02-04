@@ -9,7 +9,7 @@ class SeatChooser extends React.Component {
     if (process.env.NODE_ENV === 'production') {
       this.socket = io();
     } else {
-      this.socket = io('localhost:8080');
+      this.socket = io('localhost:8000');
     }
 
     const { loadSeats } = this.props;
